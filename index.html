@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --blue-dark: #0D47A1;
     --blue: #1565C0;
@@ -20,7 +21,9 @@
     --bg: #F0F4F8;
     --radius: 16px;
   }
+
   html { background: var(--bg); }
+
   body {
     font-family: 'Noto Sans KR', sans-serif;
     background: var(--bg);
@@ -29,6 +32,7 @@
     max-width: 480px;
     margin: 0 auto;
   }
+
   /* HERO */
   .hero {
     background: var(--blue);
@@ -116,8 +120,41 @@
   .hero-benefit-label { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 500; }
   .hero-benefit-name { color: #fff; font-size: 17px; font-weight: 700; }
   .hero-wave { width: 100%; display: block; margin-top: 20px; line-height: 0; }
+
+  /* 문의 버튼 바 */
+  .inquiry-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 71, 161, 0.97);
+    backdrop-filter: blur(6px);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .inquiry-bar-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .inquiry-btn {
+    display: inline-block;
+    background: #FFD600;
+    color: #0D47A1;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   /* BODY */
   .body-section { padding: 0 16px; }
+
   .target-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -139,6 +176,7 @@
   .target-title { font-size: 14px; font-weight: 700; color: var(--blue); letter-spacing: 1px; margin-bottom: 6px; }
   .target-desc { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.6; }
   .target-desc strong { color: var(--blue); font-weight: 700; }
+
   .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
   .benefit-card {
     background: var(--white);
@@ -150,18 +188,22 @@
   .benefit-card-label { font-size: 13px; color: var(--text-sub); font-weight: 500; margin-bottom: 4px; }
   .benefit-card-value { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; }
   .benefit-card-value .hl { color: var(--blue); }
+
   .section-label {
     font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
     color: var(--blue); margin: 24px 0 12px;
   }
+
   /* ── CSS-only accordion using <details>/<summary> ── */
   .faq-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+
   details {
     background: var(--white);
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(21,101,192,0.06);
   }
+
   summary {
     display: flex;
     align-items: flex-start;
@@ -173,9 +215,13 @@
   }
   summary::-webkit-details-marker { display: none; }
   summary::marker { display: none; }
+
   .faq-q-badge {
     width: 28px; height: 28px; min-width: 28px;
-    font-size: 22px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 14px; font-weight: 700;
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin-top: 1px;
     flex-shrink: 0;
@@ -191,12 +237,14 @@
     display: inline-block;
   }
   details[open] .faq-chevron { transform: rotate(180deg); }
+
   .faq-a {
     padding: 12px 16px 16px 54px;
     font-size: 15px; color: var(--text-sub); line-height: 1.7;
     border-top: 1px solid #F0F4F8;
   }
   .faq-a strong { color: var(--blue); font-weight: 700; }
+
   .notice {
     background: var(--blue-pale);
     border-radius: var(--radius);
@@ -205,6 +253,7 @@
     font-size: 14px; color: var(--blue-dark); line-height: 1.7;
   }
   .notice-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+
   .footer {
     background: var(--blue-dark);
     padding: 20px 16px;
@@ -216,6 +265,13 @@
 </style>
 </head>
 <body>
+
+<!-- 문의 버튼 바 -->
+<div class="inquiry-bar">
+  <span class="inquiry-bar-text">궁금한 점이 있으신가요?</span>
+  <a class="inquiry-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSegEeheE41fwZrodeMEkklqCxOePdya6xBbJ341WAtaMx5qJg/viewform?usp=header" target="_blank">📝 문의하기</a>
+</div>
+
 <div class="hero">
   <div class="hero-badge">✦ 하모니 이벤트 ✦</div>
   <div class="hero-eyebrow">참여 고객 전원</div>
@@ -245,7 +301,9 @@
     <path d="M0,20 C120,40 360,0 480,20 L480,40 L0,40 Z" fill="#F0F4F8"/>
   </svg>
 </div>
+
 <div class="body-section">
+
   <div class="target-card">
     <div class="target-icon-wrap">👥</div>
     <div>
@@ -256,6 +314,7 @@
       </div>
     </div>
   </div>
+
   <div class="section-label">이벤트 혜택</div>
   <div class="benefits-grid">
     <div class="benefit-card">
@@ -269,77 +328,67 @@
       <div class="benefit-card-value">보험 갱신 후 <span class="hl">10만원</span> 즉시 지급</div>
     </div>
   </div>
+
   <div class="section-label">자주 묻는 질문</div>
   <div class="faq-list">
+
     <details>
       <summary>
-        <div class="faq-q-badge">💰</div>
-        <div class="faq-q-text">보험료는 제가 내야 하나요?</div>
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">보험료는 어떻게 되나요?</div>
         <span class="faq-chevron">⌄</span>
       </summary>
       <div class="faq-a">
-        아니요! <strong>하모니렌트카가 계약 끝날 때까지 전부 내드려요.</strong> 고객님은 한 푼도 안 내셔도 됩니다.
+        고객님 계약 종료 시까지 <strong>하모니렌트카가 전액 부담</strong>합니다. 별도 비용은 없습니다.
       </div>
     </details>
+
     <details>
       <summary>
-        <div class="faq-q-badge">⛽</div>
-        <div class="faq-q-text">주유쿠폰은 언제 받을 수 있어요?</div>
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">주유쿠폰은 언제 받을 수 있나요?</div>
         <span class="faq-chevron">⌄</span>
       </summary>
       <div class="faq-a">
-        보험 갱신하시면 <strong>바로 10만원 주유쿠폰</strong>을 드려요. 기다리실 필요 없어요!
+        <strong>보험 갱신 후</strong> 10만원 주유쿠폰이 즉시 지급됩니다.
       </div>
     </details>
+
     <details>
       <summary>
-        <div class="faq-q-badge">📅</div>
-        <div class="faq-q-text">쿠폰 유효기간이 있나요?</div>
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">주유쿠폰 사용기한이 있나요?</div>
         <span class="faq-chevron">⌄</span>
       </summary>
       <div class="faq-a">
-        받으신 날로부터 <strong>3개월 안에</strong> 사용하시면 돼요.
+        지급일로부터 <strong>3개월 이내</strong> 사용 가능합니다.
       </div>
     </details>
+
     <details>
       <summary>
-        <div class="faq-q-badge">🧾</div>
-        <div class="faq-q-text">리스료가 올라가지는 않나요?</div>
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">불이익은 없나요?</div>
         <span class="faq-chevron">⌄</span>
       </summary>
       <div class="faq-a">
-        리스료는 <strong>그대로예요.</strong> 종합보험 피보험자가 고객님으로 바뀌는 것뿐, 비용 변동은 없어요.
+        불이익은 <strong>전혀 없습니다.</strong> 부담 없이 참여하세요!
       </div>
     </details>
-    <details>
-      <summary>
-        <div class="faq-q-badge">🏢</div>
-        <div class="faq-q-text">보험사가 바뀔 수도 있나요?</div>
-        <span class="faq-chevron">⌄</span>
-      </summary>
-      <div class="faq-a">
-        네, <strong>다른 보험사로 변경될 수 있어요.</strong> 보장 내용은 동일하게 유지되니 걱정 안 하셔도 돼요.
-      </div>
-    </details>
-    <details>
-      <summary>
-        <div class="faq-q-badge">✅</div>
-        <div class="faq-q-text">혹시 불이익은 없나요?</div>
-        <span class="faq-chevron">⌄</span>
-      </summary>
-      <div class="faq-a">
-        <strong>전혀 없어요!</strong> 손해 볼 것 없으니 편하게 참여하세요 😊
-      </div>
-    </details>
+
   </div>
+
   <div class="notice">
     <div class="notice-title">📌 이용 안내</div>
     이벤트 기간 및 상세 내용은 하모니렌트카 고객센터 또는 홈페이지를 통해 확인하세요.
   </div>
+
 </div>
+
 <div class="footer">
   <div class="footer-logo">🚗 하모니렌트카</div>
   <div class="footer-sub">고객님의 편리한 이동을 함께합니다</div>
 </div>
+
 </body>
 </html>
