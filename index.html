@@ -177,7 +177,8 @@
   .target-desc { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.6; }
   .target-desc strong { color: var(--blue); font-weight: 700; }
 
-  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  /* 주유쿠폰 단독 카드를 위해 1열 구조(1fr)로 변경 */
+  .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 16px; }
   .benefit-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -263,7 +264,6 @@
 </head>
 <body>
 
-<!-- 문의 버튼 바 -->
 <div class="inquiry-bar">
   <span class="inquiry-bar-text">궁금한 점이 있으신가요?</span>
   <a class="inquiry-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSegEeheE41fwZrodeMEkklqCxOePdya6xBbJ341WAtaMx5qJg/viewform?usp=header" target="_blank">📝 문의하기</a>
@@ -314,11 +314,6 @@
 
   <div class="section-label">이벤트 혜택</div>
   <div class="benefits-grid">
-    <div class="benefit-card">
-      <div class="benefit-card-emoji">🛡️</div>
-      <div class="benefit-card-label">보험료</div>
-      <div class="benefit-card-value"><span class="hl">하모니렌트카</span>가 계약 종료까지 납부</div>
-    </div>
     <div class="benefit-card">
       <div class="benefit-card-emoji">🎁</div>
       <div class="benefit-card-label">주유쿠폰</div>
