@@ -177,22 +177,44 @@
   .target-desc { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.6; }
   .target-desc strong { color: var(--blue); font-weight: 700; }
 
-  /* 주유쿠폰 단독 카드를 위해 1열 구조(1fr)로 변경 */
-  .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 16px; }
+  /* 혜택 섹션 정렬 및 가독성 개선 */
+  .benefits-centered {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
   .benefit-card {
     background: var(--white);
     border-radius: var(--radius);
-    padding: 18px 16px;
-    box-shadow: 0 2px 12px rgba(21,101,192,0.07);
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(21,101,192,0.08);
+    max-width: 340px;
+    width: 100%;
+    text-align: center; /* 내부 텍스트 전체 중앙 정렬 */
   }
-  .benefit-card-emoji { font-size: 28px; margin-bottom: 10px; }
-  .benefit-card-label { font-size: 13px; color: var(--text-sub); font-weight: 500; margin-bottom: 4px; }
-  .benefit-card-value { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; }
-  .benefit-card-value .hl { color: var(--blue); }
+  .benefit-card-emoji-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .benefit-card-emoji {
+    font-size: 36px;
+    background: var(--blue-pale);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .benefit-card-label { font-size: 15px; color: var(--blue); font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; }
+  .benefit-card-value { font-size: 18px; font-weight: 500; color: var(--text); line-height: 1.5; }
+  .benefit-card-value .hl { color: var(--blue); font-weight: 700; }
 
   .section-label {
     font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
     color: var(--blue); margin: 24px 0 12px;
+    text-align: center; /* 섹션 타이틀 중앙 정렬 */
   }
 
   /* ── CSS-only accordion using <details>/<summary> ── */
@@ -223,6 +245,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-top: 1px;
     flex-shrink: 0;
+    text-align: center;
   }
   .faq-q-text {
     font-size: 16px; font-weight: 600; color: var(--text);
@@ -313,9 +336,11 @@
   </div>
 
   <div class="section-label">이벤트 혜택</div>
-  <div class="benefits-grid">
+  <div class="benefits-centered">
     <div class="benefit-card">
-      <div class="benefit-card-emoji">🎁</div>
+      <div class="benefit-card-emoji-wrap">
+        <div class="benefit-card-emoji">🎁</div>
+      </div>
       <div class="benefit-card-label">주유쿠폰</div>
       <div class="benefit-card-value">보험 갱신 후 <span class="hl">10만원</span> 즉시 지급</div>
     </div>
