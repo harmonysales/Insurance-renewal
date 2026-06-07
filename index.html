@@ -32,7 +32,7 @@
     max-width: 480px;
     margin: 0 auto;
     position: relative;
-    letter-spacing: -0.3px; /* 전체 텍스트 자간 통일로 가독성 향상 */
+    letter-spacing: -0.3px;
   }
 
   /* HERO */
@@ -166,115 +166,91 @@
   .btn-form { background: var(--gold); }
   .btn-phone { background: var(--white); }
 
-  /* BODY SECTION 공통 카드 */
-  .body-section { padding: 0 16px; }
+  /* BODY SECTION 공통 카드 시스템 */
+  .body-section { padding: 8px 16px 0; }
 
   .info-card {
     background: var(--white);
     border-radius: var(--radius);
     padding: 20px;
-    margin: 16px 0;
+    margin-bottom: 16px;
     box-shadow: 0 2px 12px rgba(21,101,192,0.06);
   }
-  
-  /* 참여 대상 디자인 */
-  .target-flex {
+
+  /* 카드 헤더 공통 스타일 생성 */
+  .card-header {
     display: flex;
-    gap: 14px;
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
   }
-  .target-icon-wrap {
-    width: 44px; height: 44px;
+  .card-icon {
+    font-size: 18px;
     background: var(--blue-pale);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
   }
-  .card-title { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  /* 카드 컨텐츠 공통 스타일 */
   .card-desc { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.6; }
   .card-desc strong { color: var(--blue); font-weight: 700; }
+  .hl { color: var(--blue); font-weight: 700; }
 
   /* 참여 방법 타임라인 디자인 */
   .process-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 12px;
+    gap: 10px;
   }
   .process-step {
     display: flex;
     align-items: center;
     background: var(--bg);
-    padding: 12px 16px;
+    padding: 12px 14px;
     border-radius: 10px;
-    position: relative;
   }
   .process-who {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--white);
     background: var(--blue);
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
     margin-right: 12px;
     min-width: 55px;
     text-align: center;
+    flex-shrink: 0;
   }
-  .process-who.hm {
-    background: var(--text-sub);
-  }
+  .process-who.hm { background: var(--text-sub); }
+  .process-who.benefit { background: #E65100; } /* 혜택 배지 강조색 */
+  
   .process-text {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--text);
   }
   .process-arrow {
     text-align: center;
     color: var(--blue);
-    font-size: 14px;
+    font-size: 11px;
     line-height: 1;
     margin: -4px 0;
+    opacity: 0.6;
   }
-
-  /* 혜택 섹션 중앙 정렬 */
-  .benefits-centered {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-  .benefit-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: 0 4px 16px rgba(21,101,192,0.08);
-    max-width: 360px;
-    width: 100%;
-    text-align: center;
-  }
-  .benefit-card-emoji-wrap {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-  .benefit-card-emoji {
-    font-size: 34px;
-    background: var(--blue-pale);
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .benefit-card-label { font-size: 14px; color: var(--blue); font-weight: 700; margin-bottom: 6px; letter-spacing: 0.5px; }
-  .benefit-card-value { font-size: 17px; font-weight: 500; color: var(--text); line-height: 1.5; }
-  .benefit-card-value .hl { color: var(--blue); font-weight: 700; }
 
   .section-label {
     font-size: 15px; font-weight: 700;
-    color: var(--blue); margin: 28px 0 12px;
-    text-align: center;
+    color: var(--text-sub); margin: 24px 0 12px;
+    padding-left: 4px;
   }
 
   /* FAQ Accordion */
@@ -387,7 +363,6 @@
 </head>
 <body>
 
-<!-- 상단 바 -->
 <div class="inquiry-bar">
   <span class="inquiry-bar-text">상세문의</span>
   <div class="inquiry-btn-group">
@@ -396,7 +371,6 @@
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-badge">✦ 하모니 이벤트 ✦</div>
   <div class="hero-eyebrow">참여 고객 전원</div>
@@ -429,21 +403,22 @@
 
 <div class="body-section">
 
-  <!-- 참여 대상 카드 -->
-  <div class="info-card target-flex">
-    <div class="target-icon-wrap">👥</div>
-    <div>
+  <div class="info-card">
+    <div class="card-header">
+      <div class="card-icon">👥</div>
       <div class="card-title">참여 대상</div>
-      <div class="card-desc">
-         <strong> 기존 조건 그대로,</strong><br>
-        보험사에 <strong>'내 이름'만 등록</strong>하실 고객님
-      </div>
+    </div>
+    <div class="card-desc">
+       <strong> 기존 조건 그대로,</strong><br>
+       보험사에 <strong>'내 이름'만 등록</strong>하실 고객님
     </div>
   </div>
 
-  <!-- 참여 방법 카드 (새로 추가됨) -->
   <div class="info-card">
-    <div class="card-title">참여 방법</div>
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div class="card-title">참여 방법</div>
+    </div>
     <div class="process-container">
       <div class="process-step">
         <span class="process-who">고객님</span>
@@ -456,25 +431,22 @@
       </div>
       <div class="process-arrow">▼</div>
       <div class="process-step">
-        <span class="process-who">혜택</span>
+        <span class="process-who benefit">혜택</span>
         <span class="process-text">경품 즉시 지급 (주유쿠폰)</span>
       </div>
     </div>
   </div>
 
-  <!-- 이벤트 혜택 섹션 -->
-  <div class="section-label">이벤트 혜택</div>
-  <div class="benefits-centered">
-    <div class="benefit-card">
-      <div class="benefit-card-emoji-wrap">
-        <div class="benefit-card-emoji">🎁</div>
-      </div>
-      <div class="benefit-card-label">주유쿠폰</div>
-      <div class="benefit-card-value">보험 갱신 후 <span class="hl">10만원</span> 즉시 지급</div>
+  <div class="info-card">
+    <div class="card-header">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">이벤트 혜택</div>
+    </div>
+    <div class="card-desc">
+      주유쿠폰 <span class="hl">10만원</span> 보험 갱신 후 즉시 지급
     </div>
   </div>
 
-  <!-- 자주 묻는 질문 섹션 -->
   <div class="section-label">자주 묻는 질문</div>
   <div class="faq-list">
 
@@ -515,69 +487,4 @@
       <summary>
         <div class="faq-q-badge">🙋</div>
         <div class="faq-q-text">리스료가 올라가지는 않나요?</div>
-        <span class="faq-chevron">⌃</span>
-      </summary>
-      <div class="faq-a">
-        리스료는 <strong>전혀 변동 없어요.</strong> 바뀌는 건 종합보험 피보험자만 고객님으로 변경되는 것뿐이에요.
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="faq-q-badge">🏢</div>
-        <div class="faq-q-text">보험사가 바뀔 수도 있나요?</div>
-        <span class="faq-chevron">⌃</span>
-      </summary>
-      <div class="faq-a">
-        네, <strong>보험사는 타사로 변경될 수 있어요.</strong> 하지만 보장 내용은 동일하게 유지되니 안심하세요!
-      </div>
-    </details>
-
-    <details>
-      <summary>
-        <div class="faq-q-badge">✅</div>
-        <div class="faq-q-text">혹시 불이익은 없나요?</div>
-        <span class="faq-chevron">⌃</span>
-      </summary>
-      <div class="faq-a">
-        전혀 없어요! <strong>부담 없이 참여</strong>하셔도 돼요 😊
-      </div>
-    </details>
-
-  </div>
-
-  <!-- 이용 안내 -->
-  <div class="notice">
-    <div class="notice-title">📌 이용 안내</div>
-    이벤트 기간 및 상세 내용은 하모니렌트카 고객센터 또는 홈페이지를 통해 확인하세요.
-  </div>
-
-</div>
-
-<!-- 푸터 -->
-<div class="footer">
-  <div class="footer-logo">🚗 하모니렌트카</div>
-  <div class="footer-sub">고객님의 편리한 이동을 함께합니다</div>
-</div>
-
-<!-- 전화번호 선택 모달 레이어 -->
-<div id="phoneModal" class="phone-modal" onclick="closePhoneModal(event)">
-  <div class="phone-sheet" onclick="event.stopPropagation()">
-    <div class="phone-sheet-title">연결하실 번호를 선택해 주세요</div>
-    <a class="phone-link" href="tel:070-7704-0050">📞 070-7704-0050</a>
-    <a class="phone-link" href="tel:070-8857-9940">📞 070-8857-9940</a>
-    <button class="phone-close" onclick="closePhoneModal()">취소</button>
-  </div>
-</div>
-
-<script>
-  function openPhoneModal() {
-    document.getElementById('phoneModal').classList.add('show');
-  }
-  function closePhoneModal() {
-    document.getElementById('phoneModal').classList.remove('show');
-  }
-</script>
-
-</body>
-</html>
+        <span class="faq-chevron">...</span>
