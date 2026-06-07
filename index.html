@@ -31,6 +31,7 @@
     min-height: 100vh;
     max-width: 480px;
     margin: 0 auto;
+    position: relative;
   }
 
   /* HERO */
@@ -121,36 +122,53 @@
   .hero-benefit-name { color: #fff; font-size: 17px; font-weight: 700; }
   .hero-wave { width: 100%; display: block; margin-top: 20px; line-height: 0; }
 
-  /* 문의 버튼 바 */
+  /* 문의 버튼 바 (2개 버튼 배치 수정) */
   .inquiry-bar {
     position: sticky;
     top: 0;
     z-index: 100;
     background: rgba(13, 71, 161, 0.97);
     backdrop-filter: blur(6px);
-    padding: 10px 16px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
   .inquiry-bar-text {
     color: rgba(255,255,255,0.85);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
+    white-space: nowrap;
+    display: none; /* 화면이 작을 때 글자가 깨지는 걸 막기 위해 모바일 중심 뷰에서는 버튼을 넓게 쓰도록 숨김 처리 가능 (원하시면 살려도 됩니다) */
+  }
+  @media (min-width: 380px) {
+    .inquiry-bar-text { display: block; }
+  }
+  .inquiry-btn-group {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    justify-content: flex-end;
   }
   .inquiry-btn {
-    display: inline-block;
-    background: #FFD600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #0D47A1;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    padding: 8px 20px;
+    padding: 8px 12px;
     border-radius: 50px;
     text-decoration: none;
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    border: none;
   }
+  .btn-form { background: #FFD600; }
+  .btn-phone { background: #FFFFFF; }
 
   /* BODY */
   .body-section { padding: 0 16px; }
@@ -190,7 +208,7 @@
     box-shadow: 0 4px 16px rgba(21,101,192,0.08);
     max-width: 340px;
     width: 100%;
-    text-align: center; /* 내부 텍스트 전체 중앙 정렬 */
+    text-align: center;
   }
   .benefit-card-emoji-wrap {
     display: flex;
@@ -214,7 +232,7 @@
   .section-label {
     font-size: 15px; font-weight: 700; letter-spacing: 0.5px;
     color: var(--blue); margin: 24px 0 12px;
-    text-align: center; /* 섹션 타이틀 중앙 정렬 */
+    text-align: center;
   }
 
   /* ── CSS-only accordion using <details>/<summary> ── */
@@ -283,13 +301,58 @@
   }
   .footer-logo { color: #fff; font-size: 16px; font-weight: 900; margin-bottom: 4px; }
   .footer-sub { color: rgba(255,255,255,0.5); font-size: 11px; }
+
+  /* 커스텀 전화번호 선택 모달 스크립트용 CSS */
+  .phone-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .phone-modal.show { display: flex; }
+  .phone-sheet {
+    background: #fff;
+    width: 100%;
+    max-width: 480px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 16px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    animation: slideUp 0.2s ease-out;
+  }
+  .phone-sheet-title {
+    font-size: 15px; font-weight: 700; color: var(--text-sub);
+    margin-bottom: 14px; text-align: center;
+  }
+  .phone-link {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--blue-pale); color: var(--blue-dark);
+    padding: 14px; border-radius: 12px; font-size: 17px; font-weight: 700;
+    text-decoration: none; margin-bottom: 8px; gap: 8px;
+  }
+  .phone-close {
+    display: block; width: 100%; background: #ECEFF1; color: var(--text);
+    padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 500;
+    border: none; margin-top: 4px; cursor: pointer;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
 </style>
 </head>
 <body>
 
+<!-- 문의 버튼 바 (전화문의 추가 완료) -->
 <div class="inquiry-bar">
-  <span class="inquiry-bar-text">궁금한 점이 있으신가요?</span>
-  <a class="inquiry-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSegEeheE41fwZrodeMEkklqCxOePdya6xBbJ341WAtaMx5qJg/viewform?usp=header" target="_blank">📝 문의하기</a>
+  <span class="inquiry-bar-text">상세문의</span>
+  <div class="inquiry-btn-group">
+    <button class="inquiry-btn btn-phone" onclick="openPhoneModal()">📞 전화문의</button>
+    <a class="inquiry-btn btn-form" href="https://docs.google.com/forms/d/e/1FAIpQLSegEeheE41fwZrodeMEkklqCxOePdya6xBbJ341WAtaMx5qJg/viewform?usp=header" target="_blank">📝 문의하기</a>
+  </div>
 </div>
 
 <div class="hero">
@@ -428,6 +491,25 @@
   <div class="footer-logo">🚗 하모니렌트카</div>
   <div class="footer-sub">고객님의 편리한 이동을 함께합니다</div>
 </div>
+
+<!-- 두 번호 중 선택할 수 있게 띄워주는 하단 레이어 대화창 -->
+<div id="phoneModal" class="phone-modal" onclick="closePhoneModal(event)">
+  <div class="phone-sheet" onclick="event.stopPropagation()">
+    <div class="phone-sheet-title">연결하실 번호를 선택해 주세요</div>
+    <a class="phone-link" href="tel:070-7704-0050">📞 070-7704-0050</a>
+    <a class="phone-link" href="tel:070-8857-9940">📞 070-8857-9940</a>
+    <button class="phone-close" onclick="closePhoneModal()">취소</button>
+  </div>
+</div>
+
+<script>
+  function openPhoneModal() {
+    document.getElementById('phoneModal').classList.add('show');
+  }
+  function closePhoneModal() {
+    document.getElementById('phoneModal').classList.remove('show');
+  }
+</script>
 
 </body>
 </html>
